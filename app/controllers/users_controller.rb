@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     #CREATE post '/users' - create new users, redirect to '/users/#{users.id}'
 
-    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), render /users/show.erb; THIS IS USER PROFILE PAGE containing list of their appointment instances
+    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), render /users/show.erb; THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
 
     #do I need the below 3?
     #EDIT  get '/users/:id/edit' - find users by id, render /users/edit.erb form for user to edit their credentials
@@ -25,7 +25,7 @@ end
 # '/users/homepage.erb' - link to view all services + sign up button + log in button
 # '/users/signup.erb' - form to create a new user instance. Form includes username, password, first_name, last_name
 # '/users/login.erb' - form to sign in/ authenticate existing user
-# '/users/show.erb - users profile page. list of appointment instances belonging to that user + link to book new appointment + log out button
+# '/users/profile.erb - users profile page. list of appointment instances belonging to that user + link to book new appointment + log out button
 
 #do I need this one?
 # '/users/edit.erb' - form for user to update their password, first_name, last_name.
