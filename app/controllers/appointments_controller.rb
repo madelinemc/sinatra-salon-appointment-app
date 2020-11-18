@@ -3,7 +3,10 @@ class AppointmentsController < ApplicationController
     #     redirect to '/##'
     # end
 
-    #INDEX get '/appointment' - IS THIS PROFILE PAGE? or @services = Service.all >> show all services "service menu"
+    ####should it be appointment or appointmentS ?
+
+    #INDEX get '/appointment' - @services = Service.all >> show all services "service menu"
+    #should this go inside my services_controller?
 
     #NEW get '/appointment/new' - render /appointment/new.erb form to create new appointment instance
 
@@ -19,3 +22,9 @@ class AppointmentsController < ApplicationController
 
 
 end
+
+#views needed:
+# index redirects to '/services/all.erb'
+# '/appointments/new.erb' - form for user to create new instance of appointment. includes time, date, user_id, service_id
+# '/appointments/show.erb' - show page for a specific appointment with all details of that instance. 
+# '/appointments/edit.erb' - form for user to update an appointment. includes time, date, user_id, service_id
