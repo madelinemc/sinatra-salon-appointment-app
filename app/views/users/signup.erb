@@ -4,31 +4,32 @@
 
 <h2>Hey There! Let us grab a few details before you can book an appointment.</h2>
 
-<form action='/signup' method="POST">
+<form action='/users/signup' method="POST">
     <ul>
     <li>
         <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name">
+        <input type="text" id="first_name" name="user[first_name]" value="">
     </li>
     <br>
     <li>
         <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name">
+        <input type="text" id="last_name" name="user[last_name]" value="">
     </li>
     <br>
     <li>
         <label for="username">Create a username:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="user[username]" value="">
     </li>
     <br>
     <li>
         <label for="password">Set your password:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="user[password]" value="">
     </li>
     <br>
     <br>
     <li>
-        <input type="submit" value="Ready for a mani!"
+        <input type="submit" value="Ready for a mani!">
+    </li>
 </form>
 
 

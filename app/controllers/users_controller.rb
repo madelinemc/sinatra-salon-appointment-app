@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # end
 
     #INDEX get '/users/homepage' - render page with sign up or log in links
-    get '/homepage' do
+    get '/users/homepage' do
         erb :'/users/homepage'
     end
 
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     post '/users/signup' do
         user = User.create(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
         session[:user_id] = user.id
+        
         redirect to '/users/#{users.id}'
     end
 

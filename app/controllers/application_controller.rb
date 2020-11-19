@@ -26,5 +26,6 @@ class ApplicationController < Sinatra::Base
     def authorized_to_edit(appointment) #this is not implemented yet
       appointment.user_id == session[:user_id]
     end
-
+  end
+    
 end

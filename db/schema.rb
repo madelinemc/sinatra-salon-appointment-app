@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201117210302) do
+ActiveRecord::Schema.define(version: 20201119041943) do
 
   create_table "appointments", force: :cascade do |t|
     t.time    "time"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20201117210302) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
     t.string "appointment_id"
