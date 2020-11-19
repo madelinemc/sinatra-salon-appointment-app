@@ -1,0 +1,48 @@
+<%#form to create a new user instance. Form includes username, password, first_name, last_name %>
+
+<%# add later <% if session[:user_id] % > ~looks like you are already loged on~ %>
+
+<h2>Hey There! Let us grab a few details before you can book an appointment.</h2>
+
+<form action='/signup' method="POST">
+    <ul>
+    <li>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name">
+    </li>
+    <br>
+    <li>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name">
+    </li>
+    <br>
+    <li>
+        <label for="username">Create a username:</label>
+        <input type="text" id="username" name="username">
+    </li>
+    <br>
+    <li>
+        <label for="password">Set your password:</label>
+        <input type="password" id="password" name="password">
+    </li>
+    <br>
+    <br>
+    <li>
+        <input type="submit" value="Ready for a mani!"
+</form>
+
+
+
+
+<%#enter a valid email address (stretch goal) %>
+<%#create a username, required* %>
+<%#enter first name required*, last name %>
+<%#enter birthday for a discount MM/DD (stretch goal) %>
+
+<%# Users table schema: %>
+<%# t.string "username" %>
+<%# t.string "password" %>
+<%# t.string "first_name" %>
+<%# t.string "last_name" %>
+<%# t.string "appointment_id" %>
+
