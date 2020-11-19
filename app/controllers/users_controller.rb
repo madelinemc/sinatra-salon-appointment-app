@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     #CREATE post '/users/signup' - create new users, redirect to '/users/#{users.id}'
     post '/users/signup' do
-        user = User.create(params[:user])
+        user = User.create(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
         session[:user_id] = user.id
         redirect to '/users/#{users.id}'
     end
