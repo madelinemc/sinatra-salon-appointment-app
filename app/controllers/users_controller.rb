@@ -1,16 +1,54 @@
 class UsersController < ApplicationController
 
     # get '/' do #INDEX
-    #     redirect to '/##'
+    #     redirect to '/users/homepage'
     # end
 
     #INDEX get '/users/homepage' - render page with sign up or log in links
+    get '/homepage' do
+        erb :'/users/homepage'
+    end
 
     #NEW (SIGN UP) get '/users/signup' - render /users/signup.erb form to sign up aka create new users instance
+    get '/users/signup' do
+        erb :'/users/signup'
+    end
 
-    #CREATE post '/users' - create new users, redirect to '/users/#{users.id}'
+    #CREATE post '/users/signup' - create new users, redirect to '/users/#{users.id}'
+    post '/users/signup' do
+        user = User.create(params[:user])
+        session[:user_id] = user.id
+        redirect to '/users/#{users.id}'
+    end
 
-    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), render /users/show.erb; THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
+    #SHOW (LOGIN PAGE)
+    get '/users/login' do #MAKE HELPER METHOD LATER
+        # if is_logged_in
+        #     redirect to 'users/:id'
+        # else
+        #     erb :'/users/login'
+        # end
+        erb :'/users/login'
+    end
+
+    #POST (LOGIN PAGE)
+    post '/users/login' do
+        user = User.find_by_username(params[:username])
+        user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect to '/users/:id'
+    end
+
+    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
+    get 'users/:id' do
+        @user = User.find_by_id(params[:id])
+        erb :'/users/profile'
+    end
+
+    get 'users/logout' do
+        session.clear
+        redirect to '/users/homepage'
+    end
 
     #do I need the below 3?
     #EDIT  get '/users/:id/edit' - find users by id, render /users/edit.erb form for user to edit their credentials
