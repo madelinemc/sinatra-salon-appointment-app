@@ -1,9 +1,6 @@
-form to create a new appointment instance. Form includes time, date, user_id, service_id %>
-
-
 <h2>Book an Appointment:</h2>
 
-<form action='####' method="POST">
+<form action='/appointments/new' method="POST">
     <ul>
     <li> #date picker widget
         <label for="date">
@@ -18,7 +15,7 @@ form to create a new appointment instance. Form includes time, date, user_id, se
         <span>Select a Service:</span>
         </label>
         <ul>
-            <% @servives.each do |s| %>
+            <% @services.each do |s| %>
                 <li>
                 <%= s.name %>
                 <input type="radio" id="<%= s.id %>" name="service_id" value="<%= s.name %>">
@@ -28,7 +25,7 @@ form to create a new appointment instance. Form includes time, date, user_id, se
     </li>
     <br>
     <li> #drop down menu showing all times available to the service instance chosen above. 
-        <label for="time">
+        <label for="time">s
         <span>Select Time:</span>
         </label>
         <select id="time" name="appointment[time]">

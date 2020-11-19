@@ -10,12 +10,13 @@ class AppointmentsController < ApplicationController
 
     #NEW get '/appointments/new' - render /appointments/new.erb form to create new appointments instance
     get '/appointments/new' do
+        @services = Services.all
         erb :'/appointments/new'
     end
 
     #CREATE post 'appointments' - create new appointments, redirect to '/appointent/#{appointments.id}'
     post '/appointments/new' do
-        appointment = Appointment.create(params[:****])
+        appointment = Appointment.create(params[:user])
         redirect to "/appointments/#{appointments.id}"
     end
 
