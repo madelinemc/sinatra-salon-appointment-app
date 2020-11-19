@@ -1,0 +1,25 @@
+<h2>Our Menu:<h2>
+
+<span>
+    <% @services.each do |s| %>
+        <li>
+            <h3> <%= s.name %></h3>
+            <br>
+            <ul>
+                <li>
+                    <p> <%= s.description %></p>
+                </li>
+                <li>
+                    <p> <%= s.duration %> minutes</p>
+                </li>
+                <li>
+                    <p> <%= s.price %></p>
+                </li>
+            </ul>
+            <br>
+        </li>
+    <% end %>
+    <p>
+    <a href="/appointments/new">Ready to Book Something?!</a>
+    </p>
+</span>

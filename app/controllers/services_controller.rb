@@ -1,6 +1,10 @@
 class ServicesController < ApplicationController
 
     #INDEX get '/' - @services = Service.all >> show all service instances aka "service menu"; redirects to 'services/all.erb'
+    get '/services/all' do
+        @services = Service.all
+        erb :'/services/all'
+    end
 
     #stretch goal:
     #SHOW get 'services/:id' = find service by id (user clicks links from all.erb page), render 'services/show.erb' view with individual service instance details.
