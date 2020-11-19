@@ -3,14 +3,13 @@ class AppointmentsController < ApplicationController
     #     redirect to '/##'
     # end
 
-    ####should it be appointment or appointmentS ?
-
     #INDEX get '/appointments' - @services = Service.all >> show all services "service menu"
-    #should this go inside my services_controller?
+    get '/appointments' do
+        redirect to "/services/all"
+    end
 
     #NEW get '/appointments/new' - render /appointments/new.erb form to create new appointments instance
     get '/appointments/new' do
-        @services = Services.all
         erb :'/appointments/new'
     end
 
