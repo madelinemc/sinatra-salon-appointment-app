@@ -24,12 +24,17 @@
         </ul>
     </li>
     <br>
-    <li> #drop down menu showing all times available to the service instance chosen above. 
-        <label for="time">s
-        <span>Select Time:</span>
+    <li> #drop down menu showing all times available to the service instance set in step above. 
+        <label for="time">
+        <span>Available Times:</span>
         </label>
         <select id="time" name="appointment[time]">
-            <option value="<%= "
+            <% @services.each do |s| %>
+                <% if @appointment.service_id == s.id %>
+                    <option value="<% s.available_ties %>">"#{s.available_times}"</option>
+                <% else %>
+                <% end %>
+            <% end %>
         </select>
     </li>
     <br>
@@ -42,3 +47,12 @@
         <input type="submit" value="Book this appointment!">
     </li>
 </form>
+
+#1. How do I get @services into this file? currently it is services_controller which my index route of appointments_controller redirects to
+#2. in order for user to be able to book an appointment, need TIME... should I save time as an array and seed it with simple times such as Mondays 1pm 3pm, Tuesdays 11am, etc? 
+#3. does hidden button work to set user_id of Appointment instance to user.id of current user?
+
+#4. seeds file not working?
+
+#5. ok that I do not have an ActiveRecord version specified in my migrations?
+#6. ok that user cannot edit their account? The edit featuer is part of restful 7 in appointment_controller. User can make/edit/delete appointments
