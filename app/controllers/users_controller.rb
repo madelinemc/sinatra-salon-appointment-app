@@ -16,18 +16,10 @@ class UsersController < ApplicationController
 
     #CREATE post '/users/signup' - create new users, redirect to '/users/#{users.id}'
     post '/users/signup' do
-        binding.pry
-        user = User.create
-        # (username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
-        
+        user = User.create(params[:user])
+        #(username: params[:user][:username], password: params[:user][:password], first_name: params[:user][:first_name], last_name: params[:user][:last_name])
         session[:user_id] = user.id
-        redirect "/users/#{user.id}"
-    end
-
-    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
-    get '/users/:id' do
-        @user = User.find_by_id(params[:id])
-        erb :'/users/profile'
+        redirect to "/users/#{user.id}"
     end
 
     #SHOW (LOGIN PAGE)
@@ -42,10 +34,11 @@ class UsersController < ApplicationController
 
     #POST (LOGIN PAGE)
     post '/users/login' do
-        user = User.find_by(:username => params[:username])
-        if user && user.authenticate(params[:password])
+        user = User.find_by(:username => params[:user][:username])
+        if user 
+            #&& user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            redirect to "/users/:id"
+            redirect to "/users/#{user.id}"
         else
         redirect to "/users/signup"
         end
@@ -55,6 +48,12 @@ class UsersController < ApplicationController
     get '/users/logout' do
         session.clear
         redirect to "/users/homepage"
+    end
+
+    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
+    get '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        erb :'/users/profile'
     end
 
     #do I need the below 3?

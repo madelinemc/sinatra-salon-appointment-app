@@ -1,20 +1,19 @@
-<%# form to sign in/ authenticate existing user%>
-
 <h2>Welcome back! Log in to your account to make, change, and view appointments.</h2>
 
-<form action='/users/login' method="POST">
+<form action="/users/login" method="POST">
     <ul>
     <li>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="user[username]" value="">
     </li>
     <br>
     <li>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="user[password]" value="">
     </li>
     <br>
     <br>
     <li>
         <input type="submit" value="Let's book a mani!"
+    </li>
 </form>

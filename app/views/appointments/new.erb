@@ -1,0 +1,47 @@
+form to create a new appointment instance. Form includes time, date, user_id, service_id %>
+
+
+<h2>Book an Appointment:</h2>
+
+<form action='####' method="POST">
+    <ul>
+    <li> #date picker widget
+        <label for="date">
+        <span>Select Date:</span>
+        <em>mm/dd</em>
+        </label>
+        <input type="date" id="date" name="appointment[date]">
+    </li>
+    <br>
+    <li> #to set service_id. radio buttons to select ONE service from list off all service instances @services = Service.all
+        <label for="service_id">
+        <span>Select a Service:</span>
+        </label>
+        <ul>
+            <% @servives.each do |s| %>
+                <li>
+                <%= s.name %>
+                <input type="radio" id="<%= s.id %>" name="service_id" value="<%= s.name %>">
+                </li>
+            <% end %>
+        </ul>
+    </li>
+    <br>
+    <li> #drop down menu showing all times available to the service instance chosen above. 
+        <label for="time">
+        <span>Select Time:</span>
+        </label>
+        <select id="time" name="appointment[time]">
+            <option value="<%= "
+        </select>
+    </li>
+    <br>
+    <li> #hidden button submitting user_id as loggin in users id
+        <input type="hidden" id="user_id" name="user_id" value="<%= params[:user][:id] %>">
+    </li>
+    <br>
+    <br>
+    <li>
+        <input type="submit" value="Book this appointment!">
+    </li>
+</form>
