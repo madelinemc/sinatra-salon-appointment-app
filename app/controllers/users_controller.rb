@@ -16,10 +16,18 @@ class UsersController < ApplicationController
 
     #CREATE post '/users/signup' - create new users, redirect to '/users/#{users.id}'
     post '/users/signup' do
-        user = User.create(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
-        session[:user_id] = user.id
+        binding.pry
+        user = User.create
+        # (username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
         
-        redirect to '/users/#{users.id}'
+        session[:user_id] = user.id
+        redirect "/users/#{user.id}"
+    end
+
+    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
+    get '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        erb :'/users/profile'
     end
 
     #SHOW (LOGIN PAGE)
@@ -34,21 +42,19 @@ class UsersController < ApplicationController
 
     #POST (LOGIN PAGE)
     post '/users/login' do
-        user = User.find_by_username(params[:username])
-        user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect to '/users/:id'
+        user = User.find_by(:username => params[:username])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect to "/users/:id"
+        else
+        redirect to "/users/signup"
+        end
     end
 
-    #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
-    get 'users/:id' do
-        @user = User.find_by_id(params[:id])
-        erb :'/users/profile'
-    end
-
-    get 'users/logout' do
+    #DESTROY delete 'users/:id' - find the users, delete the user, redirect to index '/users/homepage' which renders page with sign up or log in links
+    get '/users/logout' do
         session.clear
-        redirect to '/users/homepage'
+        redirect to "/users/homepage"
     end
 
     #do I need the below 3?
@@ -56,7 +62,6 @@ class UsersController < ApplicationController
 
     #UPDATE patch '/users/:id' - find the users and make updates, redirect to view the edited users at '/users/#{users.id}' which is the profile page containing list of their appointment instances
 
-    #DESTROY delete 'users/:id' - find the users, delete the user, redirect to index '/users/homepage' which renders page with sign up or log in links
 
 end 
 
