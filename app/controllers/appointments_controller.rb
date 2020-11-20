@@ -1,7 +1,4 @@
 class AppointmentsController < ApplicationController
-    # get '/' do 
-    #     redirect to '/##'
-    # end
 
     #INDEX get '/appointments' - @services = Service.all >> show all services "service menu"
     get '/appointments' do
@@ -10,6 +7,7 @@ class AppointmentsController < ApplicationController
 
     #NEW get '/appointments/new' - render /appointments/new.erb form to create new appointments instance
     get '/appointments/new' do
+        @services = Service.all
         erb :'/appointments/new'
     end
 
