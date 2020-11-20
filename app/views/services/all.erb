@@ -1,10 +1,9 @@
-<h2>Our Menu:<h2>
+<h1>Our Menu:<h1>
 
 <span>
     <% @services.each do |s| %>
         <li>
-            <h3> <%= s.name %></h3>
-            <br>
+            <h2> <%= s.name %></h2>
             <ul>
                 <li>
                     <p> <%= s.description %></p>
@@ -13,7 +12,7 @@
                     <p> <%= s.duration %> minutes</p>
                 </li>
                 <li>
-                    <p> <%= s.price %></p>
+                    <p>$<%= s.price %>0</p>
                 </li>
             </ul>
             <br>

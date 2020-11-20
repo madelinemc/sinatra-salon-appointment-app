@@ -56,12 +56,6 @@ class UsersController < ApplicationController
         erb :'/users/profile'
     end
 
-    #do I need the below 3?
-    #EDIT  get '/users/:id/edit' - find users by id, render /users/edit.erb form for user to edit their credentials
-
-    #UPDATE patch '/users/:id' - find the users and make updates, redirect to view the edited users at '/users/#{users.id}' which is the profile page containing list of their appointment instances
-
-
 end 
 
 #views needed:
@@ -69,6 +63,3 @@ end
 # '/users/signup.erb' - form to create a new user instance. Form includes username, password, first_name, last_name
 # '/users/login.erb' - form to sign in/ authenticate existing user
 # '/users/profile.erb - users profile page. list of appointment instances belonging to that user + link to book new appointment + log out button
-
-#do I need this one?
-# '/users/edit.erb' - form for user to update their password, first_name, last_name.

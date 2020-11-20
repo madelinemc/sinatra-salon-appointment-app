@@ -19,7 +19,8 @@ class AppointmentsController < ApplicationController
 
     #SHOW get '/appointments/:id' - find newly created appointments or any appointments, render /appointments/show.erb
     get 'appointments/:id' do
-        @appointments = Appointment.find_by(:user_id => params[:user.id])
+        @appointment = Appointment.find_by(:user_id => params[:user.id])
+        @service = Service.find_by(:user_id => params[:user.id])
         erb :'/appointments/show'
     end
 
@@ -28,7 +29,11 @@ class AppointmentsController < ApplicationController
     #UPDATE patch '/appointmenst/:id' - find the appointments and make updates, redirect to view the edited appointments at '/appointments/#{appointments.id}'
 
     #DESTROY delete 'appointments/:id' - find the appointments, delete it, redirect to user profile or index aka "service menu"
-
+    delete '/appointments/:id' do
+        appointment = Appointment.find_by(:user_id => params[:user.id])
+        appointment.delete
+        redirect to 'users/homepage'
+    end
 
 end
 
