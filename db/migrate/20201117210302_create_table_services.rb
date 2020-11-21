@@ -3,8 +3,7 @@ class CreateTableServices < ActiveRecord::Migration
     create_table :services do |t|
       t.string :name
       t.text :description
-      t.integer :duration
-      t.float :price
+      t.integer :price
       t.integer :appointment_id
     end
   end

@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-    # get '/' do #INDEX
-    #     redirect to '/users/homepage'
-    # end
-
     #INDEX get '/users/homepage' - render page with sign up or log in links
     get '/users/homepage' do
         erb :'/users/homepage'
@@ -53,7 +49,16 @@ class UsersController < ApplicationController
     #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
     get '/users/:id' do
         @user = User.find_by_id(params[:id])
+        @appointments = appointments_by_user(params[:id])
         erb :'/users/profile'
+    end
+
+    helpers do
+        def appointments_by_user(user_id) #dont know if this works yet!
+            user_appts = []
+            user_appts = Appointment.all.find_by(:user_id => params[:id]) 
+            user_appts#return array of all apointment instances associated with logged in user. 
+        end
     end
 
 end 

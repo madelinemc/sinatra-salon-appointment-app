@@ -1,8 +1,8 @@
 <h2>Book an Appointment:</h2>
 
-<form action='/appointments/new' method="POST"> <%#create appointment instance AND associate it to a service instance.%>
+<form action='/appointments/new' method="POST"> 
     <ul>
-    <li> <%#date picker widget%>
+    <li> 
         <label for="date">
         <span>Select Date:</span>
         <em>mm/dd/yy</em>
@@ -10,22 +10,22 @@
         <input type="date" id="date" name="appointment[date]">
     </li>
     <br>
-    <li> <%#time drop down menu%>
+    <li>
         <label for="time">
         <span>Select Time:</span>
         </label>
-        <select id="date" name="appointment[date]">
-            <option value="10">10:00 am</option>
-            <option value="11">11:00 am</option>
-            <option value="12">12:00 pm</option>
-            <option value="13">1:00 pm</option>
-            <option value="14">2:00 pm</option>
-            <option value="15">3:00 pm</option>
-            <option value="16">4:00 pm</option>
+        <select id="time" name="appointment[time]">
+            <option value="10:00 am">10:00 am</option>
+            <option value="11:00 am">11:00 am</option>
+            <option value="12:00 pm">12:00 pm</option>
+            <option value="1:00 pm">1:00 pm</option>
+            <option value="2:00 pm">2:00 pm</option>
+            <option value="3:00 pm">3:00 pm</option>
+            <option value="4:00 pm">4:00 pm</option>
         </select>
     </li>
     <br>
-    <li> <%#to set service_id%>
+    <li>
         <label for="service_id">
         <span>Select a Service:</span>
         </label>
@@ -33,18 +33,15 @@
             <% @services.each do |s| %>
                 <li>
                 <%= s.name %>
-                <input type="radio" id="<%= s.id %>" name="service_id" value="<%= s.name %>">
+                <input type="radio" name="appointment[service_id]" id="<%= s.id %>"  value="<%= s.id %>">
                 </li>
             <% end %>
         </ul>
     </li>
+
     <br>
     <br>
     <li>
         <input type="submit" value="Book this appointment!">
     </li>
 </form>
-
-    <%# <li> #hidden button submitting user_id as logged in users id %>
-    <%#     <input type="hidden" id="user_id" name="user_id" value="<%= params[:user][:id] % > "> %>
-    <%# </li> %>

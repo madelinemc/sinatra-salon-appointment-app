@@ -13,14 +13,18 @@ class AppointmentsController < ApplicationController
 
     #CREATE post 'appointments' - create new appointments, redirect to '/appointent/#{appointments.id}'
     post '/appointments/new' do
-        appointment = Appointment.create(params[:user])
-        redirect to "/appointments/#{appointments.id}"
+        logged_in?
+        appointment = Appointment.create(params[:appointment])
+        appointment.user_id = session[:user_id]
+        appointment.save
+        redirect to "/appointments/#{appointment.id}"
     end
 
     #SHOW get '/appointments/:id' - find newly created appointments or any appointments, render /appointments/show.erb
-    get 'appointments/:id' do
-        @appointment = Appointment.find_by(:user_id => params[:user.id])
-        @service = Service.find_by(:user_id => params[:user.id])
+    get '/appointments/:id' do
+        @appointment = Appointment.all.find_by_id(params[:id])
+        @user = User.find_by_id(@appointment.user_id)
+        @service = Service.find_by_id(@appointment.service_id)
         erb :'/appointments/show'
     end
 
@@ -32,8 +36,9 @@ class AppointmentsController < ApplicationController
     delete '/appointments/:id' do
         appointment = Appointment.find_by(:user_id => params[:user.id])
         appointment.delete
-        redirect to 'users/homepage'
+        redirect to "/users/homepage"
     end
+
 
 end
 

@@ -1,24 +1,8 @@
-<%#user view each scheduled appointment with link to go to users profile page. %>
-
-<h2>See you soon,<%= @service.user_id.first_name %>!</h2>
+<h2>See you soon, <%= @user.first_name %>!</h2>
 <br>
 <br>
 <ul>
     <li>
-        <p>You've booked<%= @service.name %></p>
-    </li>
-    <li>
-        <p>On <%= @appointment.date %>at<%= @appointment.time %></p>
-    </li>
-    <li>
-        <p>Look forward to <%= @service.duration %>minutes of pampering!</p>
+        <p>You've booked: <%= @service.name %> on <%= @appointment.date %> at <%= @appointment.time %>.</p>
     </li>
 </ul>
-
-<a href="/appointments/:id/edit">Need to reschedule or change service?</a><br>
-<form action="/appointments/<%= @appointment.id %>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Cancel this Appointment">
-</form>
-<a href="/appointments/new">View your profile to see all upcoming appointments.</a><br>
-<a href="/users/logout">Log out</a> <%#make class for styling as button%>

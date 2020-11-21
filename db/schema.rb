@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20201117210302) do
 
   create_table "appointments", force: :cascade do |t|
-    t.time    "time"
+    t.string  "time"
     t.date    "date"
     t.integer "user_id"
     t.integer "service_id"
@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 20201117210302) do
   create_table "services", force: :cascade do |t|
     t.string  "name"
     t.text    "description"
-    t.integer "duration"
-    t.float   "price"
+    t.integer "price"
     t.integer "appointment_id"
   end
 
