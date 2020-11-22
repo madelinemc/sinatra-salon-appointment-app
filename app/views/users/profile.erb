@@ -3,7 +3,7 @@
 <ol>
    <% @appointments.each do |appt| %>
         <li>
-            <p><%= Service.find_by_id(appt.service_id).name %> on <%= appt.date %> at <%= appt.time %>.</p>
+            <p><a href="/appointments/<%= appt.id %>"><%= Service.find_by_id(appt.service_id).name %></a> on <%= appt.date %> at <%= appt.time %>.</p>
         </li>
     <% end %>
 </ol>

@@ -29,12 +29,25 @@ class AppointmentsController < ApplicationController
     end
 
     #EDIT  get '/appointments/:id/edit' - find appointments by id, render /appointments/edit.erb form to edit appointments
+    get '/appointments/:id/edit' do
+        @appointment = Appointment.find_by_id(params[:id])
+        @services = Service.all
+        erb :'/appointments/edit'
+    end
 
-    #UPDATE patch '/appointmenst/:id' - find the appointments and make updates, redirect to view the edited appointments at '/appointments/#{appointments.id}'
+    #UPDATE patch '/appointments/:id' - find the appointments and make updates, redirect to view the edited appointments at '/appointments/#{appointments.id}'
+    patch '/appointments/:id' do
+        @appointment = Appointment.find_by_id(params[:id])
+        @appointment.date = params[:appointment][:date]
+        @appointment.time = params[:appointment][:time]
+        @appointment.service_id = params[:appointment][:service_id]
+        @appointment.save
+        redirect to "/appointments/#{@appointment.id}"
+    end
 
     #DESTROY delete 'appointments/:id' - find the appointments, delete it, redirect to user profile or index aka "service menu"
-    delete '/appointments/:id' do
-        appointment = Appointment.find_by(:user_id => params[:user.id])
+    delete '/appointments/:id/delete' do
+        appointment = Appointment.find_by_id(params[:id])
         appointment.delete
         redirect to "/users/homepage"
     end

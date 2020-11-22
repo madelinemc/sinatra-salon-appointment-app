@@ -1,1 +1,48 @@
+<h2>Change Your Appointment:</h2>
+
+<form action="/appointments/<%= @appointment.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <ul>
+    <li> 
+        <label for="date">
+        <span>Select Date:</span>
+        </label>
+        <input type="date" id="date" name="appointment[date]" value="<%= @appointment.date %>">
+    </li>
+    <br>
+    <li>
+        <label for="time">
+        <span>Select Time:</span>
+        </label>
+        <select id="time" name="appointment[time]" value="<%= @appointment.time %>">
+            <option value="10:00 am">10:00 am</option>
+            <option value="11:00 am">11:00 am</option>
+            <option value="12:00 pm">12:00 pm</option>
+            <option value="1:00 pm">1:00 pm</option>
+            <option value="2:00 pm">2:00 pm</option>
+            <option value="3:00 pm">3:00 pm</option>
+            <option value="4:00 pm">4:00 pm</option>
+        </select>
+    </li>
+    <br>
+    <li>
+        <label for="service_id">
+        <span>Select a Service:</span>
+        </label>
+        <ul>
+            <% @services.each do |s| %>
+                <li>
+                <%= s.name %>
+                <input type="radio" name="appointment[service_id]" id="<%= s.id %>"  value="<%= s.id %>">
+                </li>
+            <% end %>
+        </ul>
+    </li>
+
+    <br>
+    <br>
+    <li>
+        <input type="submit" value="Change appointment!">
+    </li>
+</form>
 

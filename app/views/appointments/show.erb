@@ -6,10 +6,10 @@
     </li>
 </ul>
 
-<a href="/appointments/:id/edit">Need to reschedule or change this service?</a>
+<a href="/appointments/<%= @appointment.id %>/edit">Need to reschedule or change this service?</a>
 <br>
 <br>
-<form action="/appointments/<%= @appointment.id %>" method="POST">
+<form action="/appointments/<%= @appointment.id %>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Cancel this Appointment">
 </form>
