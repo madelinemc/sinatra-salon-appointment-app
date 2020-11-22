@@ -48,16 +48,16 @@ class UsersController < ApplicationController
 
     #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
     get '/users/:id' do
-        @user = User.find_by_id(params[:id])
-        @appointments = appointments_by_user(params[:id])
+        @user = User.find_by_id(session[:user_id])
+        @appointments = appointments_by_user
         erb :'/users/profile'
     end
 
     helpers do
-        def appointments_by_user(user_id) #dont know if this works yet!
-            user_appts = []
-            user_appts = Appointment.all.find_by(:user_id => params[:id]) 
-            user_appts#return array of all apointment instances associated with logged in user. 
+        def appointments_by_user
+           Appointment.all.select do |appt|
+            appt.user_id == session[:user_id]
+           end #return array of all apointment instances associated with logged in user. 
         end
     end
 

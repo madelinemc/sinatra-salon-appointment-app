@@ -1,7 +1,12 @@
 <h2>Hi, <%= @user.first_name %>!</h2>
 
-<h4>Upcoming appointments:</h4>
-
+<ol>
+   <% @appointments.each do |appt| %>
+        <li>
+            <p><%= Service.find_by_id(appt.service_id).name %> on <%= appt.date %> at <%= appt.time %>.</p>
+        </li>
+    <% end %>
+</ol>
 <br>
 <br>
 <a href="/appointments/new">Book another appointment!</a><br>

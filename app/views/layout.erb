@@ -11,23 +11,25 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/main_mc.css" />
   </head>
   <body>
     <header>
-      <img class="logo" src="images/nail_salon_logo.png" alt="logo">
       <nav>
         <ul class="nav__links">
-            <li class="nav-item"><a href="###">VIEW MENU</a></li>
-            <li class="nav-item"><a href="###">BOOK NOW</a></li>
-            <li class="nav-item"><a href="###">MY PROFILE</a></li>
-            <li class="nav-item">
+            <li><a href="/services/all">VIEW MENU</a></li>
+            <li><a href="/appointments/new">BOOK NOW</a></li>
+        </ul>
+      </nav>
+      <img class="logo" src="images/logo.jpg" alt="logo">
+      <nav>
+        <ul class="nav__links">
+            <li><a href="/users/:id">MY PROFILE</a></li>
+            <li>
               <% if !logged_in? %>
-                <a class="nav-item" href="###">LOG IN</a>
+                <a href="/users/login">LOG IN</a>
               <% else %>
-                <a class="nav-item" href="###">LOG OUT</a>
+                <a href="/users/logout">LOG OUT</a>
               <% end %>
             </li>
         </ul>
