@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def validate 
-      redirect if '/' if !logged_in?
+      redirect to "/users/signup" if !logged_in?
     end
 
     def authorized_to_edit(appointment)

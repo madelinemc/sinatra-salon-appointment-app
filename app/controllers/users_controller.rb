@@ -19,24 +19,22 @@ class UsersController < ApplicationController
     end
 
     #SHOW (LOGIN PAGE)
-    get '/users/login' do #MAKE HELPER METHOD LATER
-        # if is_logged_in
-        #     redirect to 'users/:id'
-        # else
-        #     erb :'/users/login'
-        # end
-        erb :'/users/login'
+    get '/users/login' do 
+        if logged_in?
+            redirect to "/users/#{session[:user_id]}"
+        else
+            erb :'/users/login'
+        end
     end
 
     #POST (LOGIN PAGE)
     post '/users/login' do
         user = User.find_by(:username => params[:user][:username])
-        if user 
-            #&& user.authenticate(params[:user][:password])
+        if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
             redirect to "/users/#{user.id}"
         else
-        redirect to "/users/signup"
+            redirect to "/users/signup"
         end
     end
 
@@ -48,6 +46,7 @@ class UsersController < ApplicationController
 
     #SHOW (PROFILE PAGE) get '/users/:id' - find newly created users or any users @users = users.find_by_id(params[:id]), THIS IS USER PROFILE PAGE containing list of their appointment instances; render /users/profile.erb
     get '/users/:id' do
+        validate
         @user = User.find_by_id(session[:user_id])
         @appointments = appointments_by_user
         erb :'/users/profile'
