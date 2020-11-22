@@ -1,7 +1,8 @@
-##About:
+#  Sinatra Salon Appointment App
+## About:
 Made with Sinatra and ActiveRecord, this MVC app simulates an appointment booking expierence in the theme of a nail salon. 
 
-##Installation: 
+## Installation:
 1. Fork and clone the app and change into the directory. 
 2. In your terminal run 
     ```$ bundle install```
@@ -11,7 +12,7 @@ Made with Sinatra and ActiveRecord, this MVC app simulates an appointment bookin
 4. To interact with the app, run ```$ shotgun``` in your terminal and navigate to the local server in your browswer.
 5. Enjoy booking some pretend manicures and pedicures 💅
 
-##License: 
+## License:
 This project is licensed under the MIT License.
 
 
