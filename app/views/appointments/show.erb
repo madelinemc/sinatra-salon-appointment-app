@@ -2,18 +2,16 @@
 <br>
 <ul>
     <li>
-        <p>You've booked: <%= @service.name %> on <%= @appointment.date %> at <%= @appointment.time %>.</p>
+        <p><strong>You've booked: </strong><%= @service.name %> on <%= @appointment.date %> at <%= @appointment.time %>.</p><br>
     </li>
 </ul>
 
-<a href="/appointments/<%= @appointment.id %>/edit">Need to reschedule or change this service?</a>
+<p>Need to reschedule or change this service? <a class="button champagne" href="/appointments/<%= @appointment.id %>/edit">Edit Appointment</a></p>
 <br>
 <br>
 <form action="/appointments/<%= @appointment.id %>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Cancel this Appointment">
+    <input class="button champagne" type="submit" value="Cancel this Appointment">
 </form>
 <br>
-<a href="/users/:id">View your profile to see all upcoming appointments.</a>
-<br>
-<a href="/users/logout">Log out</a>
+<p>To see all upcoming appointments: <a href="/users/:id">My Profile</a></p>
