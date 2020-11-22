@@ -1,4 +1,5 @@
 require './config/environment'
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "5b397928e3c16ef1f7d9"
+    register Sinatra::Flash
   end
 
   get "/" do
@@ -25,10 +27,6 @@ class ApplicationController < Sinatra::Base
 
     def validate 
       redirect to "/users/signup" if !logged_in?
-    end
-
-    def authorized_to_edit(appointment)
-      appointment.user_id == session[:user_id]
     end
 
   end

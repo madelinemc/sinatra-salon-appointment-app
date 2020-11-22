@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
         appointment = Appointment.create(params[:appointment])
         appointment.user_id = session[:user_id]
         appointment.save
+        flash[:success] = "Successfully booked - see you soon!"
         redirect to "/appointments/#{appointment.id}"
     end
 
