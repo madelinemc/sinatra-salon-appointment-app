@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
     erb :'/users/homepage'
   end
 
-  helpers do #not implemented yet
+  helpers do
 
     def logged_in?
       !!session[:user_id]
