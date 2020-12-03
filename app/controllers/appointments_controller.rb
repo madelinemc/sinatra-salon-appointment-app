@@ -1,18 +1,18 @@
 class AppointmentsController < ApplicationController
 
-    #INDEX get '/appointments' - @services = Service.all >> show all services "service menu"
+    #INDEX 
     get '/appointments' do
         redirect to "/services/all"
     end
 
-    #NEW get '/appointments/new' - render /appointments/new.erb form to create new appointments instance
+    #NEW 
     get '/appointments/new' do
         validate
         @services = Service.all
         erb :'/appointments/new'
     end
 
-    #CREATE post 'appointments' - create new appointments, redirect to '/appointent/#{appointments.id}'
+    #CREATE
     post '/appointments/new' do
         validate
         appointment = Appointment.create(params[:appointment])
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
         redirect to "/appointments/#{appointment.id}"
     end
 
-    #SHOW get '/appointments/:id' - find newly created appointments or any appointments, render /appointments/show.erb
+    #SHOW
     get '/appointments/:id' do
         validate
         @appointment = Appointment.all.find_by_id(params[:id])
@@ -31,7 +31,7 @@ class AppointmentsController < ApplicationController
         erb :'/appointments/show'
     end
 
-    #EDIT  get '/appointments/:id/edit' - find appointments by id, render /appointments/edit.erb form to edit appointments
+    #EDIT
     get '/appointments/:id/edit' do
         validate
         @appointment = Appointment.find_by_id(params[:id])
@@ -39,7 +39,7 @@ class AppointmentsController < ApplicationController
         erb :'/appointments/edit'
     end
 
-    #UPDATE patch '/appointments/:id' - find the appointments and make updates, redirect to view the edited appointments at '/appointments/#{appointments.id}'
+    #UPDATE
     patch '/appointments/:id' do
         validate
         @appointment = Appointment.find_by_id(params[:id])
@@ -54,7 +54,6 @@ class AppointmentsController < ApplicationController
         end
     end
 
-    #DESTROY delete 'appointments/:id' - find the appointments, delete it, redirect to user profile or index aka "service menu"
     delete '/appointments/:id/delete' do
         validate
         appointment = Appointment.find_by_id(params[:id])
@@ -64,9 +63,3 @@ class AppointmentsController < ApplicationController
 
 
 end
-
-#views needed:
-# index redirects to '/services/all.erb'
-# '/appointments/new.erb' - form for user to create new instance of appointments. includes time, date, user_id, service_id
-# '/appointments/show.erb' - show page for a specific appointments with all details of that instance. 
-# '/appointments/edit.erb' - form for user to update an appointments. includes time, date, user_id, service_id
