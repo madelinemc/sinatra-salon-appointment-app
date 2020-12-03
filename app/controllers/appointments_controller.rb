@@ -43,11 +43,15 @@ class AppointmentsController < ApplicationController
     patch '/appointments/:id' do
         validate
         @appointment = Appointment.find_by_id(params[:id])
-        @appointment.date = params[:appointment][:date]
-        @appointment.time = params[:appointment][:time]
-        @appointment.service_id = params[:appointment][:service_id]
-        @appointment.save
-        redirect to "/appointments/#{@appointment.id}"
+        if @appointment.user_id == session[:user_id]
+            @appointment.date = params[:appointment][:date]
+            @appointment.time = params[:appointment][:time]
+            @appointment.service_id = params[:appointment][:service_id]
+            @appointment.save
+            redirect to "/appointments/#{@appointment.id}"
+        else
+            "This is not your appointment so you cannot edit it!"
+        end
     end
 
     #DESTROY delete 'appointments/:id' - find the appointments, delete it, redirect to user profile or index aka "service menu"
