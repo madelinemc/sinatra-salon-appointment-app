@@ -7,8 +7,10 @@
 </ul>
 <br>
 <br>
-<p>Need to reschedule or change this service?    <a href="/appointments/<%= @appointment.id %>/edit">Click here to Edit</a></p>
-<p>To see all upcoming appointments: <a href="/users/:id">My Profile</a></p>
+<% if @appointment.user_id == session[:user_id] %>
+    <p>Need to reschedule or change this service?    <a href="/appointments/<%= @appointment.id %>/edit">Click here to Edit</a></p>
+    <p>To see all upcoming appointments: <a href="/users/:id">My Profile</a></p>
+<% end %>
 <br>
 <br>
 <form action="/appointments/<%= @appointment.id %>/delete" method="POST">
