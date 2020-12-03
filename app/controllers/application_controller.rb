@@ -21,7 +21,7 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
-    def current_user 
+    def current_user #delete
       @current_user ||= User.find(session[:user_id]) if is_logged_in?
     end
 

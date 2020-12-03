@@ -33,7 +33,7 @@
             <% @services.each do |s| %>
                 <li>
                 <%= s.name %>
-                <input type="radio" name="appointment[service_id]" id="<%= s.id %>"  value="<%= s.id %>">
+                <input type="radio" name="appointment[service_id]" id="<%= s.id %>"  value="<%= s.id %>" <%= @appointment.service_id == s.id ? "checked": ""%>>
                 </li>
             <% end %>
         </ul>
