@@ -61,5 +61,4 @@ class AppointmentsController < ApplicationController
         redirect to "/users/homepage"
     end
 
-
 end

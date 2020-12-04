@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201203152543) do
+ActiveRecord::Schema.define(version: 20201204030512) do
 
   create_table "appointments", force: :cascade do |t|
-    t.string  "time"
     t.date    "date"
     t.integer "user_id"
     t.integer "service_id"
+    t.integer "time"
   end
 
   create_table "services", force: :cascade do |t|

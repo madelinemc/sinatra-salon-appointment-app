@@ -25,6 +25,16 @@ class ApplicationController < Sinatra::Base
       redirect to "/users/signup" if !logged_in?
     end
 
+    def get_time(appointment)
+      if appointment.time <= 11
+        "#{appointment.time}:00 am"
+      elsif appointment.time == 12
+        "#{appointment.time}:00 pm"
+      else
+        "#{appointment.time - 12}:00 pm"
+      end
+    end
+
   end
     
 end

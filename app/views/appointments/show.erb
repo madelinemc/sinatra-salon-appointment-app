@@ -2,7 +2,7 @@
 <br>
 <ul>
     <li>
-        <p><strong>You've booked: </strong><%= @service.name %> on <%= @appointment.date %> at <%= @appointment.time %>.</p><br>
+        <p><strong>You've booked: </strong><%= @service.name %> on <%= @appointment.date %> at <%= get_time(@appointment) %>.</p><br>
     </li>
 </ul>
 <br>

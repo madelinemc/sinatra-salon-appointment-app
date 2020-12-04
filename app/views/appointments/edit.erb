@@ -14,14 +14,14 @@
         <label for="time">
         <span>Select Time:</span>
         </label>
-        <select class="form-box" id="time" name="appointment[time]" value="<%= @appointment.time %>">
-            <option value="10:00 am">10:00 am</option>
-            <option value="11:00 am">11:00 am</option>
-            <option value="12:00 pm">12:00 pm</option>
-            <option value="1:00 pm">1:00 pm</option>
-            <option value="2:00 pm">2:00 pm</option>
-            <option value="3:00 pm">3:00 pm</option>
-            <option value="4:00 pm">4:00 pm</option>
+        <select class="form-box" id="time" name="appointment[time]" value="<%= @appointment.time %>" >
+            <option value="10" <%= @appointment.time == 10 ? "selected": ""%>>10:00 am</option>
+            <option value="11" <%= @appointment.time == 11 ? "selected": ""%>>11:00 am</option>
+            <option value="12" <%= @appointment.time == 12 ? "selected": ""%>>12:00 pm</option>
+            <option value="13" <%= @appointment.time == 13 ? "selected": ""%>>1:00 pm</option>
+            <option value="14" <%= @appointment.time == 14 ? "selected": ""%>>2:00 pm</option>
+            <option value="15" <%= @appointment.time == 15 ? "selected": ""%>>3:00 pm</option>
+            <option value="16" <%= @appointment.time == 16 ? "selected": ""%>>4:00 pm</option>
         </select>
     </li>
     <br>
