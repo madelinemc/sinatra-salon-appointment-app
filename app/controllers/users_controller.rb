@@ -10,8 +10,13 @@ class UsersController < ApplicationController
 
     post '/users/signup' do
         user = User.create(params[:user])
-        session[:user_id] = user.id
-        redirect to "/users/#{user.id}"
+        if user.valid?
+            session[:user_id] = user.id
+            redirect to "/users/#{user.id}"
+        else
+            flash[:failure] = "That username already exists, please pick a new one."
+            redirect to "/users/signup"
+        end
     end
 
     get '/users/login' do 
@@ -49,12 +54,12 @@ class UsersController < ApplicationController
         erb :'/users/profile'
     end
 
-    helpers do
-        def appointments_by_user
-           Appointment.all.select do |appt|
-            appt.user_id == session[:user_id]
-           end #return array of all apointment instances associated with logged in user. 
-        end
+    private
+    def appointments_by_user
+        Appointment.all.select do |appt|
+        appt.user_id == session[:user_id]
+        end #return array of all apointment instances associated with logged in user. 
     end
+
 
 end 
