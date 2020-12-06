@@ -54,7 +54,7 @@ class AppointmentsController < ApplicationController
         end
     end
 
-    delete '/appointments/:id/delete' do
+    delete '/appointments/:id/delete' do #add logic to validate 
         validate
         appointment = Appointment.find_by_id(params[:id])
         appointment.delete
